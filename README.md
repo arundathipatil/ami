@@ -1,4 +1,4 @@
-# AMI template for AWS EC2 Instance
+# AMI template for AWS Ubuntu EC2 Instance
 This repository holds packer ami template
 
 # Validate Template
