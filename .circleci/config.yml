@@ -21,9 +21,7 @@ jobs:
       - run:
           name: Build AMI
           command: |
-            ./packer build \ 
-            -var aws_access_key=$AWS_ACCESS_KEY \ 
-            -var aws_secret_key=$AWS_SECRET_ACCESS_KEY \ 
+            ./packer build \
             -var aws_region=us-east-1 \ 
             -var subnet_id=subnet-20851b6d \ 
             -var source_ami=ami-068663a3c619dd892 \ 
