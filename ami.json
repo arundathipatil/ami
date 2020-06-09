@@ -2,11 +2,11 @@
     "variables": {
         "aws_access_key": "{{env `AWS_ACCESS_KEY`}}",
         "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
-        "aws_region": "",
-        "subnet_id": "",
+        "aws_region": "us-east-1",
+        "subnet_id": "subnet-20851b6d",
         "source_ami": "ami-068663a3c619dd892",
         "ssh_username":"ubuntu",
-        "ami_users" : ""
+        "ami_users" : "371394122941"
     },
     "builders" : [
         {
