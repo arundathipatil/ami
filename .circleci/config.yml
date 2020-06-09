@@ -22,9 +22,4 @@ jobs:
           name: Build AMI
           command: |
             ./packer build \
-            -var aws_region=us-east-1 \ 
-            -var subnet_id=subnet-20851b6d \ 
-            -var source_ami=ami-068663a3c619dd892 \ 
-            -var ssh_username=ubuntu \ 
-            -var ami_users=371394122941 \ 
             ami.json
