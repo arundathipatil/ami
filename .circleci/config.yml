@@ -1,3 +1,62 @@
+version: 2
+jobs:
+
+  build:
+    docker:
+      - image: circleci/python:2.7-jessie
+    steps:
+      - checkout
+      - run:
+          name: Install packages
+          command: sudo apt-get update && sudo apt-get install wget zip unzip -y
+      - run:
+          name: Download packer
+          command: |
+            wget -q https://releases.hashicorp.com/packer/1.5.6/packer_1.5.6_linux_amd64.zip
+            unzip packer*.zip  
+            chmod +x packer
+      - run:
+          name: Validate Packer Template
+          command: ./packer validate ami.json
+      - run:
+          name: Build AMI
+          command: |
+            ./packer build \ 
+            -var aws_access_key=$AWS_ACCESS_KEY \ 
+            -var aws_secret_key=$AWS_SECRET_ACCESS_KEY \ 
+            -var aws_region=us-east-1 \ 
+            -var subnet_id=subnet-20851b6d \ 
+            -var source_ami=ami-068663a3c619dd892 \ 
+            -var ssh_username=ubuntu \ 
+            -var ami_users=371394122941' \ 
+            ami.json
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 version: 2.1
 orbs:
   packer: salaxander/packer@0.0.3
