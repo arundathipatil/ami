@@ -4,7 +4,7 @@
         "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
         "aws_region": "us-east-1",
         "subnet_id": "subnet-20851b6d",
-        "source_ami": "ami-068663a3c619dd892",
+        "source_ami": "ami-085925f297f89fce1",
         "ssh_username":"ubuntu",
         "ami_users" : "823844661215,371394122941"
     },
@@ -18,7 +18,7 @@
             "subnet_id": "{{user `subnet_id`}}",
             "source_ami": "{{user `source_ami`}}",
             "ssh_username": "{{user `ssh_username`}}",
-            "ami_name": "csye6225_a4_{{timestamp}}",
+            "ami_name": "csye6225_a6_{{timestamp}}",
             "ami_description": "Ubuntu AMI for CSYE 6225- Summer 2020",
             "ami_users": "{{user `ami_users`}}",
             "launch_block_device_mappings": [
@@ -40,8 +40,23 @@
             "inline": [
                 "sudo apt update",
                 "sudo add-apt-repository ppa:openjdk-r/ppa -y",
-                "sudo apt-get update",
-                "sudo apt-get install openjdk-14-jre -y"
+                "sudo apt update",
+                "sudo apt-get install -y ca-certificates-java",
+                "sudo apt-get install openjdk-14-jre -y",
+                "sudo apt-get install ruby -y",
+                "sudo apt-get install wget -y",
+                "wget https://aws-codedeploy-us-east-1.s3.amazonaws.com/latest/install",
+                "sudo chmod +x ./install",
+                "sudo ./install auto",
+                "sudo service codedeploy-agent start",
+                "sudo service codedeploy-agent status",
+                "sudo apt-get install ruby -y",
+                "sudo apt-get install wget -y",
+                "wget https://aws-codedeploy-us-east-1.s3.amazonaws.com/latest/install",
+                "sudo chmod +x ./install",
+                "sudo ./install auto",
+                "sudo service codedeploy-agent start",
+                "sudo service codedeploy-agent status"
             ]
         }
     ]
